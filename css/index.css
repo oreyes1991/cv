@@ -5,6 +5,7 @@ body {
 	height: auto;
 	width: 15em;
 	border-radius: 50%;
+	grid-area: avatar;
 }
 
 .init > div i {
@@ -21,6 +22,18 @@ body {
 .init > * {
 	place-self: center;
 	user-select: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	max-width: 500px;
+	max-height: 500px;
+	grid-template-areas: ". . info . ."
+	". avatar avatar avatar ."
+	"study  avatar avatar avatar code"
+	".  avatar avatar avatar ."
+	". . exp . .";
+	animation: gridMovement 2s;
+	animation-delay: 1s;
 }
 
 .round-icon {
@@ -29,62 +42,164 @@ body {
 	border-radius: 50%;
 	background-color: #fff;
 	display: grid;
-	position: absolute;
+	place-self:center;
 	cursor: pointer;
+	transition: all .5s ease;
+	animation: opa .5s;
 }
 
 .round-icon:hover{
-	transform: scale(1.2,1.2) translate(-10px, -10px);
-	box-shadow: 2px 2px 4px 1px #666;
+	transform: scale(1.2,1.2) translateZ(10px);
+	box-shadow: 0px 0px 4px 1px #666;
 }
 
 .r1 {
-	animation: opa 1s;
-	top: 21%;
+	grid-area: study;
 }
 
 .r2 {
-	top: 30%;
-	left: 36%;
-	animation: opa 1s;
+	grid-area: code;
 }
 
 .r3 {
-	animation: opa 1s;
-	top: 43%;
-	left: 35%;
+	grid-area: exp;
 }
 
 .r4 {
-	animation: opa 1s;
-	top: 59%;
-	left: 36%;
+	grid-area: info
 }
 
 @keyframes opa {
 	0% {
 		opacity: 0;
-		width: 40px;
-		height: 40px;
-	}
-	30% {
-		opacity: .2;
-		width: 45px;
-		height: 45px;
 	}
 	50% {
-		opacity: .3;
-		width: 50px;
-		height: 50px;
-	}
-	70% {
-		opacity: .5;
-		width: 52px;
-		height: 52px;
+		opacity: .4;
 	}
 	100% {
-		opacity: .7;
-		width: 58px;
-		height: 58px;
+		opacity: .9;
+	}
+
+}
+
+@keyframes gridMovement {
+	0% {
+		grid-template-areas:  ". . info . ."
+		". avatar avatar avatar ."
+		"study  avatar avatar avatar code"
+		".  avatar avatar avatar ."
+		". . exp . .";
+	}
+	6% {
+		grid-template-areas:  ". . . info ."
+		"study avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar code"
+		". exp . . .";
+	}
+	12% {
+		grid-template-areas:  "study . . . info"
+		". avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		"exp . . . code";
+	}
+	18% {
+		grid-template-areas:  ". study . . ."
+		". avatar avatar avatar info"
+		".  avatar avatar avatar ."
+		"exp  avatar avatar avatar ."
+		". . . code .";
+	}
+	24% {
+		grid-template-areas:  ". . study . ."
+		". avatar avatar avatar ."
+		"exp  avatar avatar avatar info"
+		".  avatar avatar avatar ."
+		". . code . .";
+	}
+	30% {
+		grid-template-areas:  ". . . study ."
+		"exp avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar info"
+		". code . . .";
+	}
+	36% {
+		grid-template-areas:  "exp . . . study"
+		". avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		"code . . . info";
+	}
+	42% {
+		grid-template-areas:  ". exp . . ."
+		". avatar avatar avatar study"
+		".  avatar avatar avatar ."
+		"code  avatar avatar avatar ."
+		". . . info .";
+	}
+	48% {
+		grid-template-areas:  ". . exp . ."
+		". avatar avatar avatar ."
+		"code  avatar avatar avatar study"
+		".  avatar avatar avatar ."
+		". . info . .";
+	}
+	54% {
+		grid-template-areas:  ". . . exp ."
+		"code avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar study"
+		". info . . .";
+	}
+	60% {
+		grid-template-areas:  "code . . . exp"
+		". avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		"info . . . study";
+	}
+	66% {
+		grid-template-areas:  ". code . . ."
+		". avatar avatar avatar exp"
+		".  avatar avatar avatar ."
+		"info  avatar avatar avatar ."
+		". . . study .";
+	}
+	72% {
+		grid-template-areas:  ". . code . ."
+		". avatar avatar avatar ."
+		"info  avatar avatar avatar exp"
+		".  avatar avatar avatar ."
+		". . study . .";
+	}
+	78% {
+		grid-template-areas:  ". . . code ."
+		"info avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar exp"
+		". study . . .";
+	}
+	84% {
+		grid-template-areas:  "info . . . code"
+		". avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		".  avatar avatar avatar ."
+		"study . . . exp";
+	}
+	90% {
+		grid-template-areas:  ". info . . ."
+		". avatar avatar avatar code"
+		".  avatar avatar avatar ."
+		"study  avatar avatar avatar ."
+		". . . exp .";
+	}
+	100% {
+		grid-template-areas:  ". . info . ."
+		". avatar avatar avatar ."
+		"study  avatar avatar avatar code"
+		".  avatar avatar avatar ."
+		". . exp . .";
 	}
 }
